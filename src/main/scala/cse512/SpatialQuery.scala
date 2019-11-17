@@ -94,27 +94,12 @@ object SpatialQuery extends App{
 
 
   def StContains(rectPoints: Array[Double],points: Array[Double]):Boolean = {
-    var smaller_x = 0.0
-    var larger_x = 0.0
-    var smaller_y = 0.0
-    var larger_y = 0.0
-    if (rectPoints(0) < rectPoints(2)){
-      smaller_x = rectPoints(0)
-      larger_x=rectPoints(2)
-    }
-    else {
-      smaller_x = rectPoints(2)
-      larger_x = rectPoints(0)
-    }
-    if (rectPoints(1) < rectPoints(3)){
-      smaller_y = rectPoints(1)
-      larger_y = rectPoints(3)
-    }
-    else{
-      smaller_y = rectPoints(3)
-      larger_y = rectPoints(1)
-    }
-    if (points(0)>=smaller_x && points(0)<=larger_x && points(1)>=smaller_y && points(1)<=larger_y{
+    var smaller_x = min(rectPoints(0),rectPoints(2))
+    var larger_x = max(rectPoints(0),rectPoints(2))
+    var smaller_y = min(rectPoints(1),rectPoints(3))
+    var larger_y = max(rectPoints(1),rectPoints(3))
+
+    if (points(0)>=smaller_x && points(0)<=larger_x && points(1)>=smaller_y && points(1)<=larger_y){
       return true;
       }
     else return false;
